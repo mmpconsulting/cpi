@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   <record id="action_report_npb_npum" model="ir.actions.report">
+       <field name="name">NPB / NPUM Report</field>
+       <field name="model">kasbon.operasional</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">mmp_kasbon.kasbon_report</field>
+       <field name="report_file">mmp_kasbon.kasbon_report</field>
+       <field name="print_report_name">'%s' % (object.name)</field>
+       <field name="paperformat_id" ref="base.paperformat_euro" />
+       <field name="binding_model_id" ref="mmp_kasbon.model_kasbon_operasional"/>
+       <field name="binding_type">report</field>
+   </record>
+
+   <record id="action_report_lpj_kasbon" model="ir.actions.report">
+       <field name="name">LPJ Report</field>
+       <field name="model">lpj.kasbon.operasional</field>
+       <field name="report_type">qweb-pdf</field>
+       <field name="report_name">mmp_kasbon.lpj_kasbon_report</field>
+       <field name="report_file">mmp_kasbon.lpj_kasbon_report</field>
+       <field name="print_report_name">'%s' % (object.name)</field>
+       <field name="paperformat_id" ref="base.paperformat_euro" />
+       <field name="binding_model_id" ref="mmp_kasbon.model_lpj_kasbon_operasional"/>
+       <field name="binding_type">report</field>
+   </record>
+
+    <!-- SERVER ACTIONS -->
+    <record id="action_mass_create_journal" model="ir.actions.server">
+        <field name="name">Mass Create Journal</field>
+        <field name="model_id" ref="mmp_kasbon.model_kasbon_operasional"/>
+        <field name="binding_model_id" ref="mmp_kasbon.model_kasbon_operasional"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+for rec in records:
+    action = rec.create_journal()
+        </field>
+    </record>
+
+</odoo>
