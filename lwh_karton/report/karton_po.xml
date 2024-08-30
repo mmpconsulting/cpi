@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="karton_po">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.sudo()" />
+                <div class="page" style="font-family: Poppins;">
+                    <table class="header" style="width:100%; border-collapse: collapse; border: 1px solid black;">
+                        <div class="box" style="color: white; background-color: white;width:200%;">a</div>
+                        <tr style="width:100%; border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="2">
+                                <div class="box" style="width:20%;float:left;margin-right:3px;height:100px">
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:40pt; max-width:90%"/>
+                                </div>
+                                <div class="ha" style="width:20%;float:left;height:100px;text-align:left">
+                                    <h5><t t-esc="o.company_id.name"></t></h5>
+                                    <p><t t-esc="o.company_id.street"></t></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr
+                            style="width:100%; border-collapse: collapse; border: 1px solid black;text-align:center">
+                            <td colspan="2">
+                                <h4>PURCHASE ORDERS</h4>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td rowspan="2" width="60%"
+                                style="border-collapse: collapse; border: 1px solid black;padding:5px">
+                                Supplier: <br></br>
+                                    <t t-esc="o.partner_id.company"></t>
+                            </td>
+                            <td width="40%"
+                                style="border-collapse: collapse; border: 1px solid black;padding:5px">Po
+                                No : <br></br>
+                                    <t t-esc="o.name"></t>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td
+                                style="border-collapse: collapse; border: 1px solid black;padding:5px">Tgl
+                                Pesan : <br></br>
+                                    <t t-esc="o.date_order"></t>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%" style="border-collapse: collapse; border: 1px solid black;margin-top:20px">
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">No</td>
+                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Item No</td>
+                            <td rowspan="2" width="8%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Nama Item</td>
+                            <td rowspan="2" width="16%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Gambar</td>
+                            <td rowspan="2" width="8%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">ETD</td>
+                            <td colspan="3" width="12%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Box</td>
+                            <td rowspan="2" width="16%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Barcode</td>
+                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Isi/Box</td>
+                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Warna</td>
+                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Box Qty</td>
+                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Jenis Karton</td>
+                            <td rowspan="2" width="8%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Price</td>
+                            <td rowspan="2" width="8%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Total</td>
+                        </tr>
+                        <tr width="100%" style="border-collapse: collapse; border: 1px solid black;">
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">L</td>
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">W</td>
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">H</td>
+                        </tr>
+                        <t t-set="counter" t-value="0"/>
+                        <t t-foreach="o.order_line" t-as="line">
+                            <t t-set="counter" t-value="counter + 1"/>
+                            <tr width="100%" style="border-collapse: collapse; border: 1px solid black;">
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="counter"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.default_code"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.name"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <center><img t-if="line.product_image" t-att-src="image_data_uri(line.product_image)" style="max-height:70%; max-width:70%"/></center>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.date_planned" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.lenght_karton"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.width_karton"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.height_karton"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.barcode"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.isi_karton"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.warna_karton.name"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_qty"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.jenis_karton.name"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_unit)).replace(',', '.')"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_subtotal)).replace(',', '.')"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">PPN</td>
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
+                                Rp. <t t-esc="'{:0,}'.format(int(o.amount_tax)).replace(',', '.')"/>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">NET</td>
+                            <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
+                                Rp. <t t-esc="'{:0,}'.format(int(o.amount_total)).replace(',', '.')"/>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="15" style="border-collapse: collapse; border: 1px solid black;padding:5px;"><p><strong>NOTE: </strong></p></td>
+                        </tr>
+                        <tr> 
+                            <td colspan="15" style="text-align:center;padding-top:5px">Approver
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" style="text-align:center;padding-top:100px;vertical-align: bottom;">Purchase</td>
+                            <td colspan="4" style="text-align:center;padding-top:100px;vertical-align: bottom;">Finance</td>
+                            <td colspan="4" style="text-align:center;padding-top:100px;vertical-align: bottom;">PPIC</td>
+                            <td colspan="3" style="text-align:center;padding-top:100px;vertical-align: bottom;">Supplier</td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+
+    <template id="box_po">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="o" t-value="o.sudo()" />
+                <div class="page" style="font-family: Poppins;">
+                    <table class="header" style="width:100%; border-collapse: collapse; border: 1px solid black;">
+                        <div class="box" style="color: white; background-color: white;width:150%;">a</div>
+                        <tr style="width:100%; border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="8">
+                                <div class="box" style="width:20%;float:left;margin-right:3px;height:100px">
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:40pt; max-width:90%"/>
+                                </div>
+                                <div class="ha" style="width:20%;float:left;height:100px;text-align:left">
+                                    <h5><t t-esc="o.company_id.name"></t></h5>
+                                    <p><t t-esc="o.company_id.street"></t></p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr
+                            style="width:100%; border-collapse: collapse; border: 1px solid black;text-align:center">
+                            <td colspan="8">
+                                <h4>PURCHASE ORDERS</h4>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td rowspan="2" colspan="5" width="60%"
+                                style="border-collapse: collapse; border: 1px solid black;padding:5px">
+                                Supplier: <br></br>
+                                    <t t-esc="o.partner_id.company"></t>
+                            </td>
+                            <td width="40%" colspan="3"
+                                style="border-collapse: collapse; border: 1px solid black;padding:5px">Po
+                                No : <br></br>
+                                    <t t-esc="o.name"></t>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="3"
+                                style="border-collapse: collapse; border: 1px solid black;padding:5px">Tgl
+                                Pesan : <br></br>
+                                    <t t-esc="o.date_order"></t>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">No</td>
+                            <td width="15%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Kode Barang</td>
+                            <td width="15%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Deskripsi</td>
+                            <td width="20%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Gambar</td>
+                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">ETD</td>
+                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Qty</td>
+                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Price</td>
+                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Amount</td>
+                        </tr>
+                        <t t-set="counter" t-value="0"/>
+                        <t t-foreach="o.order_line" t-as="line">
+                            <t t-set="counter" t-value="counter + 1"/>
+                            <tr width="100%" style="border-collapse: collapse; border: 1px solid black;">
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="counter"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.default_code"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_id.name"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <center><img t-if="line.product_image" t-att-src="image_data_uri(line.product_image)" style="max-height:70%; max-width:70%"/></center>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.date_planned" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    <t t-esc="line.product_qty"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_unit)).replace(',', '.')"/>
+                                </td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_subtotal)).replace(',', '.')"/>
+                                </td>
+                            </tr>
+                        </t>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <tr style="border-collapse: collapse; border: 1px solid black;">
+                                <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">PPN</td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
+                                    Rp. <t t-esc="'{:0,}'.format(int(o.amount_tax)).replace(',', '.')"/>
+                                </td>
+                            </tr>
+                            <tr style="border-collapse: collapse; border: 1px solid black;">
+                                <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">NET</td>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
+                                    Rp. <t t-esc="'{:0,}'.format(int(o.amount_total)).replace(',', '.')"/>
+                                </td>
+                            </tr>
+                            <tr style="border-collapse: collapse; border: 1px solid black;">
+                                <td colspan="8" style="border-collapse: collapse; border: 1px solid black;padding:5px;"><p><strong>NOTE: </strong></p></td>
+                            </tr>
+                            <tr> 
+                                <td colspan="8" style="text-align:center;padding-top:5px">Approver
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:center;padding-top:100px;vertical-align: bottom;">Purchase</td>
+                                <td colspan="2" style="text-align:center;padding-top:100px;vertical-align: bottom;">Finance</td>
+                                <td colspan="2" style="text-align:center;padding-top:100px;vertical-align: bottom;">PPIC</td>
+                                <td colspan="2" style="text-align:center;padding-top:100px;vertical-align: bottom;">Supplier</td>
+                            </tr>
+                        </tr>
+                    </table>
+                    </div>
+                  </t>
+                </t>
+    </template>
+</odoo>

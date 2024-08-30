@@ -1,0 +1,25 @@
+<odoo>
+    <record id="action_report_karton_po" model="ir.actions.report">
+        <field name="name">PO Karton</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">lwh_karton.karton_po</field>
+        <field name="report_file">lwh_karton.karton_po</field>
+        <field name="print_report_name">'%s' % (object.name)</field>
+        <field name="paperformat_id" ref="base.paperformat_euro" />
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <record id="action_report_box_po" model="ir.actions.report">
+        <field name="name">PO Box</field>
+        <field name="model">purchase.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">lwh_karton.box_po</field>
+        <field name="report_file">lwh_karton.box_po</field>
+        <field name="print_report_name">'%s' % (object.name)</field>
+        <field name="paperformat_id" ref="base.paperformat_euro" />
+        <field name="binding_model_id" ref="purchase.model_purchase_order"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>
