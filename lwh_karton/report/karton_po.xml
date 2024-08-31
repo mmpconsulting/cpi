@@ -28,7 +28,7 @@
                             <td rowspan="2" width="60%"
                                 style="border-collapse: collapse; border: 1px solid black;padding:5px">
                                 Supplier: <br></br>
-                                    <t t-esc="o.partner_id.company"></t>
+                                    <t t-esc="o.partner_id.name"></t>
                             </td>
                             <td width="40%"
                                 style="border-collapse: collapse; border: 1px solid black;padding:5px">Po
@@ -177,7 +177,7 @@
                             <td rowspan="2" colspan="5" width="60%"
                                 style="border-collapse: collapse; border: 1px solid black;padding:5px">
                                 Supplier: <br></br>
-                                    <t t-esc="o.partner_id.company"></t>
+                                    <t t-esc="o.partner_id.name"></t>
                             </td>
                             <td width="40%" colspan="3"
                                 style="border-collapse: collapse; border: 1px solid black;padding:5px">Po

@@ -5,7 +5,7 @@
       <field name="model">product.template</field>
       <field name="inherit_id" ref="product.product_template_form_view"/>
       <field name="arch" type="xml">
-        <xpath expr="//field[@name='uom_po_id']" position="after">
+        <xpath expr="//group[@name='group_standard_price']" position="after">
           <group string="Other Dimensions">
             <field name="checkbox_karton"/>
             <field name="jenis_karton" can_create="true" can_write="true" attrs="{'invisible': [('checkbox_karton', '!=', True)]}"/>
