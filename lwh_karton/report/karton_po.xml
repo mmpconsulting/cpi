@@ -47,12 +47,12 @@
                     <table width="100%" style="border-collapse: collapse; border: 1px solid black;margin-top:20px">
                         <tr style="border-collapse: collapse; border: 1px solid black;">
                             <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">No</td>
-                            <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Item No</td>
+                            <td rowspan="2" width="10%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Item No</td>
                             <td rowspan="2" width="8%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Nama Item</td>
                             <td rowspan="2" width="16%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Gambar</td>
                             <td rowspan="2" width="8%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">ETD</td>
                             <td colspan="3" width="12%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Box</td>
-                            <td rowspan="2" width="16%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Barcode</td>
+                            <td rowspan="2" width="10%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Barcode</td>
                             <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Isi/Box</td>
                             <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Warna</td>
                             <td rowspan="2" width="4%" style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:center">Box Qty</td>
@@ -118,6 +118,13 @@
                         </t>
                         <tr style="border-collapse: collapse; border: 1px solid black;">
                             <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
+                            <td style="border-collapse: collapse;padding:5px;text-align:left">Untaxed Amount</td>
+                            <td style="border-collapse: collapse;padding:5px;text-align:right">
+                                Rp. <t t-esc="'{:0,}'.format(int(o.amount_total - o.amount_tax)).replace(',', '.')"/>
+                            </td>
+                        </tr>
+                        <tr style="border-collapse: collapse; border: 1px solid black;">
+                            <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                             <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">PPN</td>
                             <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
                                 Rp. <t t-esc="'{:0,}'.format(int(o.amount_tax)).replace(',', '.')"/>
@@ -131,7 +138,12 @@
                             </td>
                         </tr>
                         <tr style="border-collapse: collapse; border: 1px solid black;">
-                            <td colspan="15" style="border-collapse: collapse; border: 1px solid black;padding:5px;"><p><strong>NOTE: </strong></p></td>
+                            <td style="border-collapse: collapse;padding:5px;">
+                                <p style="white-space: nowrap;"><strong>NOTE:</strong></p> 
+                            </td>
+                            <td colspan="14" style="border-collapse: collapse;padding:5px;">
+                                <p style="white-space: nowrap;"><strong><t t-esc="o.notes"/></strong></p>
+                            </td>
                         </tr>
                         <tr> 
                             <td colspan="15" style="text-align:center;padding-top:5px">Approver
@@ -193,14 +205,14 @@
                             </td>
                         </tr>
                         <tr style="border-collapse: collapse; border: 1px solid black;">
-                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">No</td>
+                            <td width="5%" style="border-collapse: collapse; border: 1px solid black;padding:5px">No</td>
                             <td width="15%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Kode Barang</td>
                             <td width="15%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Deskripsi</td>
                             <td width="20%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Gambar</td>
                             <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">ETD</td>
                             <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Qty</td>
                             <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Price</td>
-                            <td width="10%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Amount</td>
+                            <td width="15%" style="border-collapse: collapse; border: 1px solid black;padding:5px">Amount</td>
                         </tr>
                         <t t-set="counter" t-value="0"/>
                         <t t-foreach="o.order_line" t-as="line">
@@ -235,6 +247,13 @@
                         <tr style="border-collapse: collapse; border: 1px solid black;">
                             <tr style="border-collapse: collapse; border: 1px solid black;">
                                 <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
+                                <td style="border-collapse: collapse;padding:5px;text-align:left">Untaxed Amount</td>
+                                <td style="border-collapse: collapse;padding:5px;text-align:right">
+                                    Rp. <t t-esc="'{:0,}'.format(int(o.amount_total - o.amount_tax)).replace(',', '.')"/>
+                                </td>
+                            </tr>
+                            <tr style="border-collapse: collapse; border: 1px solid black;">
+                                <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">PPN</td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
                                     Rp. <t t-esc="'{:0,}'.format(int(o.amount_tax)).replace(',', '.')"/>
@@ -248,7 +267,12 @@
                                 </td>
                             </tr>
                             <tr style="border-collapse: collapse; border: 1px solid black;">
-                                <td colspan="8" style="border-collapse: collapse; border: 1px solid black;padding:5px;"><p><strong>NOTE: </strong></p></td>
+                                <td style="border-collapse: collapse;padding:5px;">
+                                    <p style="white-space: nowrap;"><strong>NOTE:</strong></p> 
+                                </td>
+                                <td colspan="7" style="border-collapse: collapse;padding:5px;">
+                                    <p style="white-space: nowrap;"><strong><t t-esc="o.notes"/></strong></p>
+                                </td>
                             </tr>
                             <tr> 
                                 <td colspan="8" style="text-align:center;padding-top:5px">Approver

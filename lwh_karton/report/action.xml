@@ -1,6 +1,6 @@
 <odoo>
     <record id="action_report_karton_po" model="ir.actions.report">
-        <field name="name">PO Karton</field>
+        <field name="name">Print PO Karton Box</field>
         <field name="model">purchase.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">lwh_karton.karton_po</field>
@@ -12,7 +12,7 @@
     </record>
 
     <record id="action_report_box_po" model="ir.actions.report">
-        <field name="name">PO Box</field>
+        <field name="name">Print PO</field>
         <field name="model">purchase.order</field>
         <field name="report_type">qweb-pdf</field>
         <field name="report_name">lwh_karton.box_po</field>
