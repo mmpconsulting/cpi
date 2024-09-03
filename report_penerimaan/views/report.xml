@@ -1,4 +1,30 @@
 <odoo>
+    <!-- <record id="paperformat" model="report.paperformat">
+        <field name="name">Custom Report Format</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">30</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="orientation">Portrait</field>
+    </record> -->
+
+    <record id="paperformat" model="report.paperformat">
+        <field name="name">European A5</field>
+        <field name="default" eval="True"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">24</field>
+        <field name="dpi">90</field>
+    </record>
+
+
     <record id="action_report_buktipenerimaan" model="ir.actions.report">
         <field name="name">Bukti Penerimaan Barang</field>
         <field name="model">stock.picking</field>
@@ -6,13 +32,14 @@
         <field name="report_name">report_penerimaan.report_barang</field>
         <field name="report_file">report_penerimaan.report_barang</field>
         <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="paperformat_id" ref="report_penerimaan.paperformat"/>
         <field name="binding_type">report</field>
     </record>
 
     <template id="report_barang">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <div class="page">
+                <div class="page" style="font-size: 10pt !important; font-family:Arial; margin-bottom: 30px">
                     <!-- Company Header -->
                     <div style="float: left; text-align: left; margin-bottom: 20px">
                         <strong><t t-esc="o.company_id.name"/></strong><br/>
@@ -30,11 +57,11 @@
                         <table style="width: 100%; table-layout: fixed;">
                             <tr>
                                 <td style="width: 20%;"><strong>Nama Supplier</strong></td>
-                                <td style="width: 2%;">:</td>
+                                <td style="width: 2%;text-align: left;">:</td>
                                 <td style="width: 38%;"><t t-esc="o.partner_id.name"/></td>
-                                <td style="width: 20%;"><strong>Nomor</strong></td>
-                                <td style="width: 2%;">:</td>
-                                <td style="width: 18%;"><t t-esc="o.name"/></td>
+                                <td style="width: 15%;"><strong>Nomor</strong></td>
+                                <td style="width: 2%;text-align: left;">:</td>
+                                <td style="width: 23%;"><t t-esc="o.name"/></td>
                             </tr>
                             <tr>
                                 <td><strong>Alamat</strong></td>
@@ -99,7 +126,7 @@
                    <!-- Signatures -->
                    <div style="margin-top: 40px;">
                     <table style="width: 100%;">
-                        <tr>
+                        <tr>    
                             <!-- Gudang -->
                             <td style="text-align: center; width: 33%;"><strong>Diterima Oleh,</strong></td>
                             <!-- Purchase and QC (combined for 50% width) -->
@@ -119,9 +146,9 @@
                             </td>
                         </tr>
                     </table>
-                </div>
-                </div>
-            </t>
-        </t> 
+                   </div>                             
+             </div>
+           </t>
+       </t> 
     </template>
 </odoo>
