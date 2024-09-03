@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_addons\report_penerimaan_addons\report_penerimaan,addons\report_penerimaan.addons\report_penerimaan,model_addons\report_penerimaan_addons\report_penerimaan,base.group_user,1,1,1,1
