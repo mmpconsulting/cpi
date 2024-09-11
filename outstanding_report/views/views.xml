@@ -10,16 +10,16 @@
             <group>
               <field name="date"/>
               <field name="due_date"/>
-              <field name="vendors"/>
+              <field name="vendors" widget="many2many_tags"/>
             </group>
             <notebook>
               <page string="Orders">
                 <field name="order_line_ids">
                   <tree string="Order Lines" editable="bottom">
-                    <field name="reference_order"/>
-                    <field name="supplier"/>
-                    <field name="order_date"/>
-                    <field name="total"/>
+                    <field name="reference_order" style="width: 150px;"/>
+                    <field name="supplier" style="width: 150px;"/>
+                    <field name="order_date" style="width: 150px;"/>
+                    <field name="total" style="width: 100px;"/>
                     <field name="order_id" invisible="1"/>
                   </tree>
                 </field>
