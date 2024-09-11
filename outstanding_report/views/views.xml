@@ -36,7 +36,7 @@
 
 
     <record id="action_outstanding_report_wizard" model="ir.actions.act_window">
-      <field name="name">Outstanding Report Wizard</field>
+      <field name="name">Outstanding Report</field>
       <field name="res_model">outstanding.report</field>
       <field name="view_mode">form</field>
       <field name="view_id" ref="view_outstanding_report_wizard_form"/>
