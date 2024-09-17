@@ -3,10 +3,9 @@
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
         <div class="page" style="padding: 20px;">
-
           <div class="header" style="text-align:center; margin-bottom: 0px;">
             <h2>
-              <t t-esc="o.company_id.name"></t>
+                <t t-esc="o.company_id.name"></t>
             </h2>
             <strong style="font-size: 18px;">Outstanding Purchase Orders</strong>
             <p style="margin: 0;font-size: 16px;"><t t-esc="o.date"
@@ -86,12 +85,11 @@
     <t t-call="web.html_container">
       <t t-foreach="docs" t-as="o">
         <div class="page" style="padding: 20px;">
-
           <div class="header" style="text-align:center; margin-bottom: 0px;">
             <h2>
               <t t-esc="o.company_id.name"></t>
             </h2>
-            <strong style="font-size: 18px;">Outstanding Purchase Orders</strong>
+            <strong style="font-size: 18px;">Outstanding Sale Orders</strong>
             <p style="margin: 0;font-size: 16px;"><t t-esc="o.date"
                 t-options='{"widget": "date","format": "dd-MM-yyyy"}' /> - <t t-esc="o.due_date"
                 t-options='{"widget": "date","format": "dd-MM-yyyy"}' /></p>
@@ -114,8 +112,8 @@
               <tbody>
                 <tr style="border-top:1px solid black;border-bottom:1px solid black;border-collapse:collapse;background-color: #d3d3d3;padding: 20px;border-top: 1px;">
                   <td colspan="7" style="padding: 5px;">
-                    <strong>Supplier:</strong>
-                    <t t-esc="lines.supplier.name" />
+                    <strong>Customer:</strong>
+                    <t t-esc="lines.customer.name" />
                   </td>
                 </tr>
                 <tr>
