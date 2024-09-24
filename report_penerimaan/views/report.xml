@@ -69,7 +69,10 @@
                                 <td><t t-esc="o.partner_id.street"/></td>
                                 <td><strong>Tanggal</strong></td>
                                 <td>:</td>
-                                <td><t t-esc="o.date_done.strftime('%d/%m/%Y')"/></td>
+                                <td><t t-if="o.date_done">
+                                    <t t-esc="o.date_done.strftime('%d/%m/%Y')"/>
+                                </t>
+                                </td>
                             </tr>
                             <tr>
                                 <td></td>
