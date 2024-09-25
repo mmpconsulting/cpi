@@ -88,7 +88,7 @@
                                 <td></td>
                                 <td><strong>No. SJ</strong></td>
                                 <td>:</td>
-                                <td></td>
+                                <td><t t-esc="o.no_sj"/></td>
                             </tr>
                         </table>
                     </div>
@@ -119,7 +119,7 @@
                                         <td style="text-align: left;"><t t-esc="line.product_id.name"/></td>
                                         <td style="text-align: center;"><t t-esc="line.product_uom.name"/></td>
                                         <td style="text-align: right;"><t t-esc="line.product_uom_qty"/></td>
-                                        <td></td>
+                                        x<td style="text-align: left;"><t t-esc="line.notes"/></td>
                                     </tr>
                                 </t>
                             </tbody>

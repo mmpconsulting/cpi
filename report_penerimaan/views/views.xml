@@ -1,19 +1,32 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="addons\report_penerimaan.list">
-      <field name="name">addons\report_penerimaan list</field>
-      <field name="model">addons\report_penerimaan.addons\report_penerimaan</field>
+
+    <record model="ir.ui.view" id="inherit_stock_picking_nosj">
+      <field name="name">inherit.stock.picking.nosj</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+        <xpath expr="//field[@name='origin']" position="after">
+          <field name="no_sj"/>
+        </xpath>
       </field>
     </record>
--->
+
+    <record model="ir.ui.view" id="inherit_stock_picking_note">
+      <field name="name">inherit.stock.picking.note</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='move_ids_without_package']/tree/field[@name='quantity_done']" position="after">
+          <field name="notes"/>
+        </xpath>
+        <xpath expr="//field[@name='move_ids_without_package']/form/group/field[@name='quantity_done']" position="after">
+          <field name="notes"/>
+        </xpath>
+      </field>
+    </record>
+
 
     <!-- actions opening views on models -->
 <!--
