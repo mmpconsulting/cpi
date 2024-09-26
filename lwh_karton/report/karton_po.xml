@@ -79,7 +79,7 @@
                                     <t t-esc="line.product_id.name"/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
-                                    <center><img t-if="line.product_image" t-att-src="image_data_uri(line.product_image)" style="max-height:70%; max-width:70%"/></center>
+                                    <center><img t-if="line.product_id.image_1920" t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height:70%; max-width:70%"/></center>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
                                     <t t-esc="line.date_planned" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
@@ -228,7 +228,7 @@
                                     <t t-esc="line.product_id.name"/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
-                                    <center><img t-if="line.product_image" t-att-src="image_data_uri(line.product_image)" style="max-height:70%; max-width:70%"/></center>
+                                    <center><img t-if="line.product_id.image_1920" t-att-src="image_data_uri(line.product_id.image_1920)" style="max-height:70%; max-width:70%"/></center>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
                                     <t t-esc="line.date_planned" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>

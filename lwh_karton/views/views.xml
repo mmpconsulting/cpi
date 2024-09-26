@@ -8,13 +8,13 @@
         <xpath expr="//group[@name='group_standard_price']" position="after">
           <group string="Other Dimensions">
             <field name="checkbox_karton"/>
-            <field name="jenis_karton" can_create="true" can_write="true" attrs="{'invisible': [('checkbox_karton', '!=', True)]}"/>
-            <field name="warna_karton" can_create="true" can_write="true" attrs="{'invisible': [('checkbox_karton', '!=', True)]}"/>
-            <field name="isi_karton" attrs="{'invisible': [('checkbox_karton', '!=', True)]}"/>
+            <field name="jenis_karton" can_create="True" can_write="True" invisible="checkbox_karton != True"/>
+            <field name="warna_karton" can_create="True" can_write="True" invisible="checkbox_karton != True"/>
+            <field name="isi_karton" invisible="checkbox_karton != True"/>
             <field name="lenght_karton"/>
             <field name="width_karton"/>
             <field name="height_karton"/>
-        </group>
+          </group>
         </xpath>
       </field>
     </record>

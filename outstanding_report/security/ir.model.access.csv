@@ -1,5 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-outstanding_report.access_outstanding_report,access_outstanding_report,outstanding_report.model_outstanding_report,base.group_user,1,1,1,1
-outstanding_report.access_outstanding_report_so,access_outstanding_report_so,outstanding_report.model_outstanding_report_so,base.group_user,1,1,1,1
-outstanding_report.access_outstanding_report_line,access_outstanding_report_line,outstanding_report.model_outstanding_report_line,base.group_user,1,1,1,1
-outstanding_report.access_outstanding_report_line_so,access_outstanding_report_line_so,outstanding_report.model_outstanding_report_line_so,base.group_user,1,1,1,1

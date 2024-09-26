@@ -23,7 +23,7 @@
 {
     'name': 'Order Line Product Images',
     'summary': 'Shows product images',
-    'version': '16.0.1.0',
+    'version': '17.0.1.0',
     'category': 'extra',
     'author':'Jupical Technologies Pvt. Ltd.',
     'maintainer': 'Jupical Technologies Pvt. Ltd.',
