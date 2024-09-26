@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+quotations_pdf_report.access_quotation_report,access_quotation_report,quotations_pdf_report.model_quotation_report,base.group_user,1,1,1,1
+quotations_pdf_report.access_quotation_report_line,access_quotation_report_line,quotations_pdf_report.model_quotation_report_line,base.group_user,1,1,1,1

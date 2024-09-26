@@ -1,0 +1,107 @@
+<odoo>
+    <template id="report_saleorder">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                    <div class="page">
+                        <style>
+                            * {
+                                padding: 5px;
+                            }
+
+                            table, tr, td {
+                                border: 1px solid black;
+                                border-collapse: collapse;
+                              }
+                        </style>
+                        <table width="100%">
+                            <div class="box" style="color: white; background-color: white;width:200%;">a</div>
+                            <tr>
+                                <td style="padding: 5px;">
+                                    Tanggal Order
+                                </td>
+                                <td style="padding: 5px;">
+                                    Pelanggan
+                                </td>
+                                <td style="padding: 5px;">
+                                    Nama Tampilan
+                                </td>
+                                <td style="padding: 5px;">
+                                    Faktur
+                                </td>
+                                <td style="padding: 5px;">
+                                    Produk
+                                </td>
+                                <td style="padding: 5px;">
+                                    Kuantitas
+                                </td>
+                                <td style="padding: 5px;">
+                                    Harga Satuan
+                                </td>
+                                <td style="padding: 5px;">
+                                    Total
+                                </td>
+                                <td style="padding: 5px;">
+                                    Tax(%)
+                                </td>
+                                <td style="padding: 5px;">
+                                    Tax
+                                </td>
+                                <td style="padding: 5px;">
+                                    Tanggal Pembayaran
+                                </td>
+                                <td style="padding: 5px;">
+                                    Jumlah Bayar
+                                </td>
+                            </tr>
+                            <t t-foreach="o.order_line_ids" t-as="data">
+                                <tr>
+                                    <td style="padding: 5px;">
+                                        <t t-esc="data.reference_order.create_date" t-options='{"widget": "date","format": "dd-MM-yyyy"}' />
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-esc="data.reference_order.partner_id.name" />
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-esc="data.reference_order.name" />
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-esc="data.reference_order.invoice_ids.name" />
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-foreach="data.reference_order.order_line" t-as="line">
+                                            <t t-esc="line.product_id.name" /> <br></br>
+                                        </t>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-foreach="data.reference_order.order_line" t-as="line">
+                                            <t t-esc="line.product_uom_qty" /> <br></br>
+                                        </t>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-foreach="data.reference_order.order_line" t-as="line">
+                                            Rp. <t t-esc="'{:0,}'.format(int(line.price_unit)).replace(',', '.')"/> <br></br>
+                                        </t>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        Rp. <t t-esc="'{:0,}'.format(int(data.reference_order.amount_total - data.reference_order.amount_tax)).replace(',', '.')"/>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-esc="data.reference_order.order_line.tax_id.name" />
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        Rp. <t t-esc="'{:0,}'.format(int(data.reference_order.amount_tax)).replace(',', '.')"/>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        <t t-esc="data.reference_order.payment_ids.date" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
+                                    </td>
+                                    <td style="padding: 5px;">
+                                        Rp. <t t-esc="'{:0,}'.format(int(data.reference_order.amount_total)).replace(',', '.')"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </table>
+                    </div>
+            </t>
+        </t>
+    </template>
+</odoo>
