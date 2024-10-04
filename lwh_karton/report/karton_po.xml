@@ -13,7 +13,7 @@
                         <tr style="width:100%; border-collapse: collapse; border: 1px solid black;">
                             <td colspan="2">
                                 <div style="width:20%;float:left;margin-right:3px;">
-                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:40pt; max-width:90%"/>
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:160pt; max-width:160%; padding-top:20px; padding-left:30px;padding-bottom:20px"/>
                                 </div>
                                 <div style="width:70%;float:left;text-align:left">
                                     <p><strong><t t-esc="o.company_id.name"></t></strong></p>
@@ -109,7 +109,7 @@
                                     <t t-esc="line.product_id.warna_karton.name"/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
-                                    <t t-esc="line.product_qty"/>
+                                    <t t-esc="'{:.2f}'.format(line.product_qty).replace(',', '.')"/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
                                     <t t-esc="line.product_id.jenis_karton.name"/>
@@ -180,9 +180,9 @@
                         <tr style="width:100%; border-collapse: collapse; border: 1px solid black;">
                             <td colspan="8">
                                 <div style="width:20%;float:left;margin-right:3px;">
-                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:40pt; max-width:90%"/>
-                                </div>
-                                <div style="width:70%;float:left;text-align:left">
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:160pt; max-width:160%; padding-top:20px; padding-left:30px;padding-bottom:20px"/>
+                                </div>  
+                                <div style="width:70%;float:left;text-align:left;padding-left:5px;">
                                     <p><strong><t t-esc="o.company_id.name"></t></strong></p>
                                     <p><t t-esc="o.company_id.street"></t></p>
                                     <p><t t-esc="o.company_id.street2"></t></p>
@@ -246,7 +246,7 @@
                                     <t t-esc="line.date_planned" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
-                                    <t t-esc="line.product_qty"/>
+                                    <t t-esc="'{:.2f}'.format(line.product_qty).replace(',', '.')"/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
                                     <span t-esc="line.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
