@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <template id="karton_po">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-set="o" t-value="o.sudo()" />
                 <div class="page" style="font-family: Poppins;">
+                    <head>
+                        <meta charset="UTF-8"/>
+                    </head>
                     <table class="header" style="width:100%; border-collapse: collapse; border: 1px solid black;">
                         <div class="box" style="color: white; background-color: white;width:200%;">a</div>
                         <tr style="width:100%; border-collapse: collapse; border: 1px solid black;">
@@ -12,7 +15,7 @@
                                 <div style="width:20%;float:left;margin-right:3px;">
                                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:40pt; max-width:90%"/>
                                 </div>
-                                <div style="width:20%;float:left;text-align:left">
+                                <div style="width:70%;float:left;text-align:left">
                                     <p><strong><t t-esc="o.company_id.name"></t></strong></p>
                                     <p><t t-esc="o.company_id.street"></t></p>
                                     <p><t t-esc="o.company_id.street2"></t></p>
@@ -105,17 +108,17 @@
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
                                     <t t-esc="line.product_id.warna_karton.name"/>
                                 </td>
-                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
                                     <t t-esc="line.product_qty"/>
                                 </td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
                                     <t t-esc="line.product_id.jenis_karton.name"/>
                                 </td>
-                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
-                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_unit)).replace(',', '.')"/>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
+                                    <span t-esc="line.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
-                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
-                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_subtotal)).replace(',', '.')"/>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
+                                    <span t-esc="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
                             </tr>
                         </t>
@@ -123,21 +126,21 @@
                             <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                             <td style="border-collapse: collapse;padding:5px;text-align:left">Untaxed Amount</td>
                             <td style="border-collapse: collapse;padding:5px;text-align:right">
-                                Rp. <t t-esc="'{:0,}'.format(int(o.amount_total - o.amount_tax)).replace(',', '.')"/>
+                                <span t-esc="o.amount_total - o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                             </td>
                         </tr>
                         <tr style="border-collapse: collapse; border: 1px solid black;">
                             <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                             <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">PPN</td>
                             <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
-                                Rp. <t t-esc="'{:0,}'.format(int(o.amount_tax)).replace(',', '.')"/>
+                                <span t-esc="o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                             </td>
                         </tr>
                         <tr style="border-collapse: collapse; border: 1px solid black;">
                             <td colspan="13" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                             <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">NET</td>
                             <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
-                                Rp. <t t-esc="'{:0,}'.format(int(o.amount_total)).replace(',', '.')"/>
+                                <span t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                             </td>
                         </tr>
                         <tr style="border-collapse: collapse; border: 1px solid black;">
@@ -169,14 +172,17 @@
             <t t-foreach="docs" t-as="o">
                 <t t-set="o" t-value="o.sudo()" />
                 <div class="page" style="font-family: Poppins;">
+                    <head>
+                        <meta charset="UTF-8"/>
+                    </head>
                     <table class="header" style="width:100%; border-collapse: collapse; border: 1px solid black;">
-                        <div class="box" style="color: white; background-color: white;width:150%;">a</div>
+                        <div class="box" style="color: white; background-color: white;width:200%;">a</div>
                         <tr style="width:100%; border-collapse: collapse; border: 1px solid black;">
-                            <td colspan="2">
+                            <td colspan="8">
                                 <div style="width:20%;float:left;margin-right:3px;">
                                     <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)" style="max-height:40pt; max-width:90%"/>
                                 </div>
-                                <div style="width:20%;float:left;text-align:left">
+                                <div style="width:70%;float:left;text-align:left">
                                     <p><strong><t t-esc="o.company_id.name"></t></strong></p>
                                     <p><t t-esc="o.company_id.street"></t></p>
                                     <p><t t-esc="o.company_id.street2"></t></p>
@@ -187,7 +193,7 @@
                             </td>
                         </tr>
                         <tr style="width:100%; border-collapse: collapse; border: 1px solid black;text-align:center;">
-                            <td colspan="2">
+                            <td colspan="8">
                                 <h3 style="padding-top: 15px;">PURCHASE ORDERS</h3>
                             </td>
                         </tr>
@@ -239,14 +245,14 @@
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
                                     <t t-esc="line.date_planned" t-options='{"widget": "date","format": "dd-MM-yyyy"}'/>
                                 </td>
-                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
                                     <t t-esc="line.product_qty"/>
                                 </td>
-                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
-                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_unit)).replace(',', '.')"/>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
+                                    <span t-esc="line.price_unit" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
-                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;">
-                                    Rp. <t t-esc="'{:0,}'.format(int(line.price_subtotal)).replace(',', '.')"/>
+                                <td style="border-collapse: collapse; border: 1px solid black;padding:3px;text-align:right">
+                                    <span t-esc="line.price_subtotal" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
                             </tr>
                         </t>
@@ -255,21 +261,21 @@
                                 <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                                 <td style="border-collapse: collapse;padding:5px;text-align:left">Untaxed Amount</td>
                                 <td style="border-collapse: collapse;padding:5px;text-align:right">
-                                    Rp. <t t-esc="'{:0,}'.format(int(o.amount_total - o.amount_tax)).replace(',', '.')"/>
+                                    <span t-esc="o.amount_total - o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
                             </tr>
                             <tr style="border-collapse: collapse; border: 1px solid black;">
                                 <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">PPN</td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
-                                    Rp. <t t-esc="'{:0,}'.format(int(o.amount_tax)).replace(',', '.')"/>
+                                    <span t-esc="o.amount_tax" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
                             </tr>
                             <tr style="border-collapse: collapse; border: 1px solid black;">
                                 <td colspan="6" style="border-collapse: collapse; border: 1px solid black;padding:3px;"></td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">NET</td>
                                 <td style="border-collapse: collapse; border: 1px solid black;padding:5px;text-align:right">
-                                    Rp. <t t-esc="'{:0,}'.format(int(o.amount_total)).replace(',', '.')"/>
+                                    <span t-esc="o.amount_total" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: o.currency_id}"/>
                                 </td>
                             </tr>
                             <tr style="border-collapse: collapse; border: 1px solid black;">
